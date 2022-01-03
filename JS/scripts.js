@@ -1,4 +1,3 @@
-//Brianna Winston
 //Last updated~ January 3, 2022
 
                         /* This program demonstrates a simple JS app */
@@ -61,8 +60,6 @@ function arrayDetails(list) {
       }
     }
   });
-
-  arrayDetails(pokemonRepository.getAll());
 }
 
 //pokemonRepository getAll function allows arrayDetails function to access information with IIFE function
