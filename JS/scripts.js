@@ -1,4 +1,11 @@
-//Array holding Pokemon elements
+//Brianna Winston
+//Last updated~ January 3, 2022
+
+                        /* This program demonstrates a simple JS app */
+
+//pokemonList array has been encapsulated in a  "IIFE" pokemonRepository function to eliminate global variable interference from other javascript files
+
+let pokemonRepository = (function() {
 
 let pokemonList = [
     { name:"Pikachu", height:0.4, type: ["static","lightningrod"]},
@@ -9,20 +16,63 @@ let pokemonList = [
     { name:"Igglybuff", height:0.3, type: ["cute-charm","friend-guard"]},
     { name:"Diglet", height:0.2, type: ["growl","sucker punch"]}
 ]
-    
-//for loop displays each pokemonList element's name, height, and type 
-for (let i = 0; i < pokemonList.length; i++) {
-    const { name, height, type } = pokemonList[i];
-    const pokemonInfo =
-       "Name: " + name + " , " + "Height: " + height + " meters " + " , " + "Types: " + type.join(" , ");
-    const smallPokemonMessage = "AWW! that is one itty bitty Pokemon";   
-    const bigPokemonMessage = "WHOA! that is one big 'ole Pokemon";
-      if (pokemonList[i].height < 0.3) {                                 //if statement targets smallest and largest Pokemon
-      document.write(pokemonInfo + "- " + smallPokemonMessage + "<br />"); //displays message for smallest Pokemon
-    } else if (pokemonList[i].height > 1) {
-      document.write(pokemonInfo + "- " + bigPokemonMessage + "<br />"); //displays message for largest Pokemon
-    } else {
-      document.write(pokemonInfo + "<br />"); //no message displayed outside largest and smallest Pokemon
-    }
-  }
 
+//This function allows new pokemon information to be submitted. However, the information must be an actual object. 
+
+function add(newPokemon){
+    if (typeof newPokemon === "object"){  //verifies validity of user input
+        pokemonList.push(newPokemon) }
+    else {
+      document.write("Invalid! Input must be an object!")
+    }
+}
+
+//getAll function retains all additional and original input
+
+function getAll(){
+  return pokemonList;
+}
+
+//Filter function extracts biggest pokemons from pokemonList array
+let isPokemonBig = pokemonList;
+const bigPokemons = isPokemonBig.filter((height) => {
+return isPokemonBig >= 0.5;
+})
+
+//returns key-value paris
+
+return {
+  add: add,
+  getAll: getAll
+};
+
+})();
+
+//forEach function prints each pokemonList string while returning a message for biggest and smallest pokemon
+
+function arrayDetails(list) {
+      list.forEach(function(item) {
+        document.write( "<br />" + "Name: " + item.name + " " + "Height: " + item.height + " " + "meters" + " " + "Type: " + item.type.join(", ")); {
+           if (item.height < 0.3 ) {
+            document.write( " ~ AWW! that is one itty bitty Pokemon!");
+          }
+          else if (item.height > 1) {
+              document.write(" ~ WHOA! that is one big 'ole Pokemon!"); 
+      }
+    }
+  });
+
+  arrayDetails(pokemonRepository.getAll());
+}
+
+//pokemonRepository getAll function allows arrayDetails function to access information with IIFE function
+arrayDetails(pokemonRepository.getAll());
+
+
+
+
+
+ 
+
+
+ 
