@@ -32,6 +32,16 @@ function getAll(){
   return pokemonList;
 }
 
+ // **** ADD ADDLISTITEM FUNCTION TO CREATE LIST OF POKEMON **** \\
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon--list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+  } 
+ 
 //Filter function extracts biggest pokemons from pokemonList array
 let isPokemonBig = pokemonList;
 const bigPokemons = isPokemonBig.filter((height) => {
