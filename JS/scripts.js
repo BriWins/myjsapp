@@ -42,6 +42,10 @@ function getAll(){
     pokemonList.appendChild(listItem);
   } 
  
+  function showDetails(pokemon){
+    console.log(pokemon.name);
+  }
+  
 //Filter function extracts biggest pokemons from pokemonList array
 let isPokemonBig = pokemonList;
 const bigPokemons = isPokemonBig.filter((height) => {
