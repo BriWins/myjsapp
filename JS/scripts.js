@@ -42,15 +42,9 @@ function getAll(){
     pokemonList.appendChild(listItem);
   } 
  
-  // showDetails function displays pokemon name 
-  function showDetails(pokemon){
-    console.log(pokemon.name);
-  }
-  
-  button.addEventListener("click", function () {
-      console.log(pokemon);
-    }); 
-}
+   button.addEventListener("click", function () {
+      showDetails(pokemon);
+    });
   
 //Filter function extracts biggest pokemons from pokemonList array
 let isPokemonBig = pokemonList;
