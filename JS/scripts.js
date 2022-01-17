@@ -22,7 +22,7 @@ function add(newPokemon){
     if (typeof newPokemon === "object"){  //verifies validity of user input
         pokemonList.push(newPokemon) }
     else {
-      document.write("Invalid! Input must be an object!")
+      return "Invalid! Input must be an object!";
     }
 }
 
