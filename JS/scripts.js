@@ -1,83 +1,106 @@
-//Last updated~ January 3, 2022
+//Brianna Winston
+//Last updated~ January 20, 2022
 
                         /* This program demonstrates a simple JS app */
 
-//pokemonList array has been encapsulated in a  "IIFE" pokemonRepository function to eliminate global variable interference from other javascript files
+//pokemonList array has been encapsulated in a  "IIFE" repository function to eliminate global variable interference from other javascript files
 
-let pokemonRepository = (function() {
+let repository = (function() {
 
-let pokemonList = [
-    { name:"Pikachu", height:0.4, type: ["static","lightningrod"]},
-    { name:"Cubchoo", height:0.5, type: ["charm","growl"]},
-    { name:"Pidgeot", height:1.5, type: ["tackle","twister"]},
-    { name:"Wigglytuff", height:1, type: ["sing","attract"]},
-    { name:"Pichu", height:0.3, type: ["sweet kiss","charm"]},
-    { name:"Igglybuff", height:0.3, type: ["cute-charm","friend-guard"]},
-    { name:"Diglet", height:0.2, type: ["growl","sucker punch"]}
-]
+  let pokemonList = [{
+          name: "Pikachu",
+          height: 0.4,
+          type: ["static", "lightningrod"]
+      },
+      {
+          name: "Cubchoo",
+          height: 0.5,
+          type: ["charm", "growl"]
+      },
+      {
+          name: "Pidgeot",
+          height: 1.5,
+          type: ["tackle", "twister"]
+      },
+      {
+          name: "Wigglytuff",
+          height: 1,
+          type: ["sing", "attract"]
+      },
+      {
+          name: "Pichu",
+          height: 0.3,
+          type: ["sweet kiss", "charm"]
+      },
+      {
+          name: "Igglybuff",
+          height: 0.3,
+          type: ["cute-charm", "friend-guard"]
+      },
+      {
+          name: "Diglet",
+          height: 0.2,
+          type: ["growl", "sucker punch"]
+      }
+  ]
 
-//This function allows new pokemon information to be submitted. However, the information must be an actual object. 
+  //add() function takes input for a new pokemon
 
-function add(newPokemon){
-    if (typeof newPokemon === "object"){  //verifies validity of user input
-        pokemonList.push(newPokemon) }
-    else {
-      return "Invalid! Input must be an object!";
-    }
-}
+  function add(newPokemon) {
+      let error = "Invalid! Input must be an object!";
+      if (typeof newPokemon === "object") {
+          pokemonList.push(newPokemon)
+      } else {
+          return error;
+      }
+  }
 
-//getAll function retains all additional and original input
+//showDetails() iterates through each object in pokemonList array
 
-function getAll(){
-  return pokemonList;
-}
+  function showDetails( pokemon ){
+    console.log( pokemon );
+  }
 
- // **** ADD ADDLISTITEM FUNCTION TO CREATE LIST OF POKEMON **** \\
+//addListItem() creates <li> tag and a button with .button--class
+
   function addListItem(pokemon) {
-    let pokemonList = document.querySelector(".pokemon--list");
-    let listItem = document.createElement("li");
-    let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    listItem.appendChild(button);
-    pokemonList.appendChild(listItem);
-  } 
+      let pokemonList = document.querySelector(".pokemon--list");
+      let listpokemon = document.createElement("li");
+      let button = document.createElement("button");
+      button.innerText = pokemon.name;
+      button.classList.add("button-class");
+      listpokemon.appendChild(button);
+      pokemonList.appendChild(listpokemon);
+
+      button.addEventListener( 'click', function(){ 
+      showDetails( pokemon.name )
+      })
+    }
+      
+//getAll() gathers all from repository
  
-   button.addEventListener("click", function () {
-      showDetails(pokemon);
-    });
-  
-//Filter function extracts biggest pokemons from pokemonList array
-let isPokemonBig = pokemonList;
-const bigPokemons = isPokemonBig.filter((height) => {
-return isPokemonBig >= 0.5;
-})
+  function getAll() {
+      return pokemonList;
+  }
 
-//returns key-value paris
-
-return {
-  add: add,
-  getAll: getAll
-};
+//returns added pokemon input, addListItem(0) function input, and updated repository
+ 
+  return {
+      add: add,
+      getAll: getAll,
+      addListItem: addListItem
+  };
 
 })();
 
-//forEach function prints each pokemonList string while returning a message for biggest and smallest pokemon
+//grabs informations from within IFFY functions and displays each object in browswer
 
-function arrayDetails(list) {
-      list.forEach(function(item) {
-        document.write( "<br />" + "Name: " + item.name + " " + "Height: " + item.height + " " + "meters" + " " + "Type: " + item.type.join(", ")); {
-           if (item.height < 0.3 ) {
-            document.write( " ~ AWW! that is one itty bitty Pokemon!");
-          }
-          else if (item.height > 1) {
-              document.write(" ~ WHOA! that is one big 'ole Pokemon!"); 
-      }
-    }
-  });
-}
+repository.getAll().forEach(function(pokemon) {
 
-//pokemonRepository getAll function allows arrayDetails function to access information with IIFE function
-arrayDetails(pokemonRepository.getAll());
+repository.addListItem(pokemon);
+
+}); 
+
 
 
 
