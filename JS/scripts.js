@@ -1,5 +1,4 @@
 //Brianna Winston
-//Last updated~ January 22, 2022
 
                         /* This program demonstrates a simple JS app */
 
@@ -31,7 +30,7 @@ function addListItem(pokemon) {
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
     button.addEventListener( 'click', function(){ 
-    showDetails( pokemon.name )
+    showDetails( pokemon )
     })
     }
       
