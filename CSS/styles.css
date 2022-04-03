@@ -1,1 +1,20 @@
-
+ li {
+    flex: 1 0 20%;
+    margin: 10px;
+    }
+    
+    .pokemon--list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    }
+    
+    .main-content{
+    display: flex;
+    }
+    
+    .main-image{
+    flex: 1;
+    margin: 15px;
+    }
+    
